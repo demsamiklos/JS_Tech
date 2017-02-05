@@ -1,5 +1,8 @@
 #Dokumentáció - FAMILY toDO
 
+###<b>A programoról</b>
+Beadandónak egy toDO CRUD alkalmazást valósítottam meg. Backendnek nodeJS-t használtam Adonis keretrendszerrel, frontenden idő hiánya miatt pedig jQuery-t használtam.
+
 ###<b>Funkcionális követelmények</b>
 * Regisztráció
 * Bejelentkezés
