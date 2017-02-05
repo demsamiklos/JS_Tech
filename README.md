@@ -2,7 +2,9 @@
 
 ###<b>A programoról</b>
 Beadandónak egy toDO CRUD alkalmazást valósítottam meg. Backendnek nodeJS-t használtam Adonis keretrendszerrel, frontenden idő hiánya miatt pedig jQuery-t használtam.
+
 A program indítása: npm run dev
+
 A használat során először családtagokat hozzunk létre, utána hozhatunk létre feladatokat, amelyeket akár több családtaghoz is hozzá rendelhetünk.
 
 ###<b>Funkcionális követelmények</b>
