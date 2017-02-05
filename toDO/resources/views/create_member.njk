@@ -1,0 +1,43 @@
+{% extends 'master' %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">Családtag felvétele</div>
+				{% if old('errors') %}
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+					{% for error in old('errors') %}
+						{{ error.message }}<br>
+					{% endfor %}
+					</div>
+				</div>
+				{% endif %}
+				<div class="panel-body">
+					<form class="form-horizontal" method="post">
+
+						{{ csrfField }}
+
+						<div class="form-group">
+							<label for="name" class="col-lg-2 control-label">Családtag neve</label>
+							<div class="col-lg-10">
+							<input type="text" class="form-control" id="member_name" name="name" placeholder="Családtag neve">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-lg-10 col-lg-offset-2">
+							<button type="reset" class="btn btn-default">Mégsem</button>
+							<button type="submit" class="btn btn-primary">Hozzáadás</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

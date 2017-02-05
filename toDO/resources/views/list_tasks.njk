@@ -1,0 +1,49 @@
+{% extends 'master' %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">Feladatok</div>
+				<div class="panel-body">
+					{{ csrfField | safe }}
+					<table class="table">
+						<tr>
+							<th>Feladat</th>
+							<th>Leírás</th>
+							<th>Státusz</th>
+							<th>Végrehajtó(k)</th>
+							<th>Szerkesztés</th>
+							<th>Törlés</th>
+						</tr>
+						{% for task in tasks %}
+						<tr>
+							<td>{{ task.title }}</td>
+							<td>{{ task.information }}</td>
+							<td>{{ task.status }}</td>
+							<td>
+							{% for member in members %}
+								{% if task.id == member.task_id %}
+								{{ member.name }}<br>
+								{% endif %}
+							{% endfor %}
+							</td>
+							<td><a class="btn btn-primary" href="/edit_task/{{ task.id }}">Szerkesztés</a></td>
+							<td><a class="btn btn-danger task-delete" href="/delete_task/{{ task.id }}">Törlés</a></td>
+						</tr>
+						{% else %}
+						<tr>
+							<td colspan="7" class="text-center"><strong>Jelenleg nincs felvéve feladatod!</strong></td>
+						</tr>
+						{% endfor %}
+					</table>
+					<a class="btn btn-primary" href="../create_task" role="button">Új feladat felvétele</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

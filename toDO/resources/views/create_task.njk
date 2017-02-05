@@ -1,0 +1,71 @@
+{% extends 'master' %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">Új feladat létrehozása</div>
+				{% if old('errors') %}
+				<div class="panel panel-danger">
+					<div class="panel-heading">
+					{% for error in old('errors') %}
+						{{ error.message }}<br>
+					{% endfor %}
+					</div>
+				</div>
+				{% endif %}
+				<div class="panel-body">
+					<form class="form-horizontal" method="post">
+
+						{{ csrfField }}
+
+						<div class="form-group">
+							<label for="name" class="col-lg-2 control-label">Feladat neve</label>
+							<div class="col-lg-10">
+								<input type="text" class="form-control" id="title" name="title" placeholder="Feladat neve">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="ingredients" class="col-lg-2 control-label">Feladat leírása</label>
+							<div class="col-lg-10">
+								<textarea class="form-control" rows="3" id="information" name="information" placeholder="Feladat leírása"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="category_id" class="col-lg-2 control-label">Státusz</label>
+							<div class="col-lg-10">
+								<select class="form-control" id="status" name="status">
+									<option value="Még nincs elkezdve" selected>Még nincs elkezdve</option>
+									<option value="Folyamatban van">Folyamatban van</option>
+									<option value="Elhalasztva">Elhalasztva</option>
+									<option value="Felfüggesztbe">Felfüggesztbe</option>
+									<option value="Befejezve">Befejezve</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="category_id" class="col-lg-2 control-label">Elvégző személy</label>
+							<div class="col-lg-10">
+								{% for member in members %}
+								<div class="checkbox">
+									<label><input type="checkbox" value="{{ member.id }}" name="aMembers[]">{{ member.name }}</label>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-lg-10 col-lg-offset-2">
+								<button type="reset" class="btn btn-default">Mégsem</button>
+								<button type="submit" class="btn btn-primary">Létrehozás</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

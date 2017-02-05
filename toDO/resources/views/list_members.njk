@@ -1,0 +1,39 @@
+{% extends 'master' %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-heading">Családtagok</div>
+				<div class="panel-body">
+					{{ csrfField | safe }}
+					<table class="table">
+						<tr>
+							<th>Azonosító</th>
+							<th>Név</th>
+							<th>Szerkesztés</th>
+							<th>Törlés</th>
+						</tr>
+						{% for member in members %}
+						<tr>
+							<td>{{ member.id }}</td>
+							<td>{{ member.name }}</td>
+							<td><a class="btn btn-primary" href="/edit_member/{{ member.id }}">Szerkesztés</a></td>
+							<td><a class="btn btn-danger member-delete" href="/delete_member/{{member.id }}">Törlés</a></td>
+						</tr>
+						{% else %}
+						<tr>
+							<td colspan="4" class="text-center"><strong>Jelenleg nincs felvéve családtagod!</strong></td>
+						</tr>
+						{% endfor %}
+					</table>
+					<a class="btn btn-primary" href="../create_member" role="button">Új családtag felvétele</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
